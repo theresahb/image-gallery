@@ -1,0 +1,31 @@
+.search-input {
+    width: 30rem;
+}
+
+.search-input input {
+  width: 100%;
+  padding: .6rem 0 .6rem .7rem;
+  outline: none;
+  border: 1px solid #433f6d93;
+  border-radius: 3px;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+@media (max-width: 900px) {
+    .search-input {
+        width: 18rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-input {
+        width: 13rem;
+    }
+}
+

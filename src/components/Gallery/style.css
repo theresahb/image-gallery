@@ -1,0 +1,52 @@
+.container {
+  margin: 0 auto;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.image-container .image {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image-container img {
+  height: 100%;
+  cursor: grab;
+}
+
+.image-container img:active {
+  cursor: grabbing;
+}
+
+.load {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    grid-template-columns: 1fr;
+  }
+}
