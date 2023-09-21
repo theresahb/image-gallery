@@ -8,14 +8,12 @@ const Gallery = ({ searchTerm }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      const filteredImages = gallery.filter((pic) => {
+    const filteredImages = gallery.filter((pic) => {
         const tags = pic.type;
         return tags.toLowerCase().includes(searchTerm.toLowerCase());
-      });
-      setImages(filteredImages);
-      setIsLoading(false); 
-    }, 2000); // a 2-second loading delay
+    });
+    setImages(filteredImages);
+    setIsLoading(false); 
   }, [searchTerm]);
 
   const [dragIndex, setDragIndex] = useState(-1);
