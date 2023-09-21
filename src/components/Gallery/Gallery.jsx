@@ -17,6 +17,7 @@ const Gallery = ({ searchTerm }) => {
   }, [searchTerm]);
 
   const [dragIndex, setDragIndex] = useState(-1);
+  const [touchStartY, setTouchStartY] = useState(null);
 
   const startDrag = (index, event) => {
     setDragIndex(index);
@@ -43,6 +44,27 @@ const Gallery = ({ searchTerm }) => {
       updatedImages.splice(toIndex, 0, movedImage);
       setImages(updatedImages);
     }
+    setDragIndex(-1);
+  };
+
+  const onTouchStart = (index, event) => {
+    setTouchStartY(event.touches[0].clientY);
+    setDragIndex(index);
+  };
+
+  const onTouchMove = (index, event) => {
+    if (dragIndex === index) {
+      const touchY = event.touches[0].clientY;
+      const diffY = touchY - touchStartY;
+      if (Math.abs(diffY) > 20) {
+        // Prevent scrolling while dragging
+        event.preventDefault();
+      }
+    }
+  };
+
+  const onTouchEnd = () => {
+    setTouchStartY(null);
     setDragIndex(-1);
   };
 
@@ -73,6 +95,9 @@ const Gallery = ({ searchTerm }) => {
               onDragStart={(event) => startDrag(index, event)}
               onDragOver={(event) => onDragOver(event)}
               onDrop={(event) => onDrop(index, event)}
+              onTouchStart={(event) => onTouchStart(index, event)}
+              onTouchMove={(event) => onTouchMove(event)}
+              onTouchEnd={() => onTouchEnd()}
             >
               <img src={image.image} alt="Image" loading="lazy" className={isLoading ? 'loading-image' : ''} />
             </div>
