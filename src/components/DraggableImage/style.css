@@ -1,0 +1,13 @@
+.image-container .image {
+    border-radius: 6px;
+    overflow: hidden;
+}
+  
+.image-container img {
+    height: 100%;
+    cursor: grab;
+}
+  
+.image-container img:active {
+    cursor: grabbing;
+}
