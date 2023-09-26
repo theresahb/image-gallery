@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { auth } from '../../../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Loader from '../../Loader/Loader'
 import './style.css'
 
@@ -61,6 +61,12 @@ const SignIn = () => {
                 </div>
                 <button type="submit" onClick={signIn} disabled={isLoading} >{isLoading ? <Loader /> : "Login"}</button>
             </form>
+            <p className="">
+                No account yet? {' '}
+                <NavLink to="/signup">
+                    Sign up
+                </NavLink>
+            </p>
         </div>
     )
 }
